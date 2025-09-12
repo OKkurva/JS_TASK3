@@ -86,57 +86,128 @@
 
 //35. Функція, яка рахує середнє арифметичне масиву
 
-function average(arr) {
-  if (arr.length === 0) {
-    return null; 
-  }
+// function average(arr) {
+//   if (arr.length === 0) {
+//     return null; 
+//   }
   
-  let sum = 0;
-  for (let num of arr) {
-    sum += num;
-  }
+//   let sum = 0;
+//   for (let num of arr) {
+//     sum += num;
+//   }
   
-  return sum / arr.length;
-}
+//   return sum / arr.length;
+// }
 
 
-let numbers = [23, 12, 6, 1, 17];
-alert(average(numbers)); 
+// let numbers = [23, 12, 6, 1, 17];
+// alert(average(numbers)); 
 
 //36. Функція для перевірки паліндрому.
 
 
-function Palindrome(randword){
-    const normalized = randword.toLowerCase();
-    return normalized === normalized.split('').reverse().join('');
-}
+// function Palindrome(randword){
+//     const normalized = randword.toLowerCase();
+//     return normalized === normalized.split('').reverse().join('');
+// }
 
-const randword = prompt('enter your word: ');
+// const randword = prompt('enter your word: ');
 
-if (Palindrome(randword)){
-    alert(`Okay this is palindrome`);
-} else {
-    alert(`No no no this is not palindrome word`);
-}
+// if (Palindrome(randword)){
+//     alert(`Okay this is palindrome`);
+// } else {
+//     alert(`No no no this is not palindrome word`);
+// }
 
 //37. Функція для конвертації рядка у формат Title Case.
 
 
-function toTitleCase(str) {
-  const smallWords = ["a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "from", "by", "of", "in"];
+// function toTitleCase(str) {
+//   const smallWords = ["a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "from", "by", "of", "in"];
 
-  return str
-    .toLowerCase()
-    .split(" ")
-    .map((word, index, arr) => {
-      if (smallWords.includes(word) && index !== 0 && index !== arr.length - 1) {
-        return word; 
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
+//   return str
+//     .toLowerCase()
+//     .split(" ")
+//     .map((word, index, arr) => {
+//       if (smallWords.includes(word) && index !== 0 && index !== arr.length - 1) {
+//         return word; 
+//       }
+//       return word.charAt(0).toUpperCase() + word.slice(1);
+//     })
+//     .join(" ");
+// }
+
+//     const userInput = prompt("Введіть текст для форматування у Title Case:");
+
+//     if (userInput) {
+//       alert(toTitleCase(userInput));
+//     } else {
+//       alert("Ви нічого не ввели!");
+//     }
+
+//38. Функція, яка рахує кількість слів у рядку.
+
+// function countWords(str) {
+ 
+//   return str.trim().split(/\s+/).filter(Boolean).length;
+// }
+
+// const strInput = prompt('Enter some sentence: ');
+
+// if (strInput) {
+//     alert(countWords(strInput));
+// } else {
+//   alert('Please put something in box');
+// }
+
+
+//39. Функція, яка генерує випадкове число у діапазоні.
+
+function getRandomInt(min, max) {
+
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const min = parseInt(prompt("Введіть мінімальне число:"), 10);
+    const max = parseInt(prompt("Введіть максимальне число:"), 10);
+
+    if (!isNaN(min) && !isNaN(max) && min <= max) {
+      const randomNum = getRandomInt(min, max);
+      alert("Your numb: " + randomNum);
+    } else {
+      alert("Please enter the correct number.");
+    }
+
+//40. Функція, яка форматує дату у вигляді dd.mm.yyyy.
+
+function formatDate(input) {
+  const date = new Date(input);
+
+  if (isNaN(date)) {
+    throw new Error("Неправильна дата");
+  }
+
+  const day = String(date.getDate()).padStart(2, "0");        // день (01–31)
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // місяці 0–11, тому +1
+  const year = date.getFullYear();                            // рік
+
+  return `${day}.${month}.${year}`;
 }
 
-console.log(toTitleCase("to make ends meet"));
+const normDate = prompt('Enter some date and we will turn it into correct form ', '2025.09.04' );
+
+if (normDate) {
+      const formatted = formatDate(normDate);
+      if (formatted) {
+        alert("Formatted date: " + formatted);
+      } else {
+        alert("Enter the correct date");
+      }
+    } else {
+      alert("Please enter something next time!");
+    }
 
 
