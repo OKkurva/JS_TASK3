@@ -26,9 +26,9 @@ let rate = prompt('Please rate our servisevfrom 1 to 6:')
 
 if (rate < 3){
     alert(`ooooooohhhhhh my got this is so bad bro`);
-} else if (rate >=3 && rate <5){
+} else if (rate >= 3 && rate < 5){
     alert(`not bad not bad now you`);
-} else if (rate >=5 && rate <= 6){
+} else if (rate >= 5 && rate <= 6){
     alert (`good nigger!`);
 } else {
     alert(`Please enter the correct number next time or i will kill whole your family by bana knife! have a good day!`);
@@ -154,7 +154,7 @@ if (Palindrome(randword)){
 
 //20. Виведи кількість днів у місяці (користувач вводить номер місяця).
 
-function daysInMonth(month, year1){
+function daysInMonth(month){
     return new Date(year, month +1, 0).getDate();
 }
 

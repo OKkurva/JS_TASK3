@@ -14,7 +14,7 @@ console.log(human);
 
 //2.Запитай у користувача його рік народження та порахуй вік.
 
-let age = prompt('whats your born year little bastard?', '2004');
+let age = prompt('whats your born year'  ,'2004');
 
 console.log(2025 - age);
 alert(`Your age is ${2025 - age}`);
@@ -30,34 +30,34 @@ alert(`Temperature infarengeits is: ${(celciy * 1.8) + 32}`);
 
 //4. Обчисли площу та периметр прямокутника.
 
-let Height = prompt('Please enter the height of rectangle: ');
-let Width = prompt('Please enter the width of rectangle: ');
+let height = prompt('Please enter the height of rectangle: ');
+let width = prompt('Please enter the width of rectangle: ');
 
-Height = Number(Height);
-Width = Number(Width);
+height = Number(height);
+width = Number(width);
 
-Perymetr = (2 * (Height + Width));
-Square = (Height * Width);
+perymetr = (2 * (height + width));
+square = (height * hidth);
 
-console.log(Perymetr);
-console.log(Square);
+console.log(perymetr);
+console.log(square);
 
 alert(`The perymeter of rectangleis: ${Perymetr}`);
 alert(`The square of rectangleis: ${Square}`);
 
 //5. Перевір, чи введене число парне або непарне.
 
-let Num = prompt('Please enter your fuking number you stupid idiot (write even number): ');
+let numprompt = prompt('Please enter your fuking number you stupid idiot (write even number): ');
 
-Num = Number(Num);
+numprompt = Number(numprompt);
 
-if (Num % 2 === 0) {
-  console.log(Num + " is even");
+if (numprompt % 2 === 0) {
+  console.log(numpromptum + " is even");
 } else {
-  console.log(Num + " is odd");
+  console.log(numpromptum + " is odd");
 };
 
-if (Num % 2 === 0){
+if (numpromptum % 2 === 0){
     alert(`Your number is even sweetie)`);
 } else{
     alert(`Are you f***ing kidding me??`);
@@ -65,12 +65,12 @@ if (Num % 2 === 0){
 
 //6.Обчисли квадрат і куб числа.
 
-let NUM = prompt('Enter your number: ')
+let randnum = prompt('Enter your number: ')
 
-NUM = Number(NUM);
+randnum = Number(randnum);
 
-let sec = Math.pow(NUM,2);
-let third = Math.pow(NUM,3);
+let sec = Math.pow(randnum,2);
+let third = Math.pow(randnum,3);
 
 console.log(sec);
 console.log(third);
@@ -84,13 +84,13 @@ let num = prompt('Pleas ener your interesting number sweatheart: ');
 
 num = Number(num);
 
-if (num % 3 === 0 || num % 5 === 0){
+if (num % 3 === 0 && num % 5 === 0){
     console.log('Fine your number is good');
 } else {
     console.log('wrong number shorty please try next time)');
 };
 
-if (num % 3 === 0 || num % 5 === 0){
+if (num % 3 === 0 && num % 5 === 0){
     alert(`Fine your number is good`);
 } else {
     alert(`wrong number shorty please try next time)`);
@@ -119,14 +119,14 @@ if (message.includes('hui')){
 
 //10. Перевір, чи число додатне, від’ємне або нуль.
 
-let num1 = prompt("Please enter positive num:"); 
-num1 = Number(num); 
+let numpositive = prompt("Please enter positive num:"); 
+numpositive = Number(numpositive); 
 
-if (num > 0) {
+if (numpositive > 0) {
     alert("okay bro thats correct");
-} else if (num < 0) {
+} else if (numpositive < 0) {
     alert("why did you put minus before it?????");
-} else if (num === 0) {
+} else if (numpositive === 0) {
     alert("i will multiply you by zero idiot");
 } else {
     alert("HA HA HA......Idiot i will find you liitle peace of poo");
