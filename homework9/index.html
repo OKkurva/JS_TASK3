@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script9.js" defer></script> 
+</head>
+
+<style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+     .traffic-light {
+      width: 100px;
+      padding: 20px;
+      background: #333;
+      border-radius: 20px;
+      margin: auto;
+    }
+    .light {
+      width: 60px;
+      height: 60px;
+      margin: 15px auto;
+      border-radius: 50%;
+      background: #555;
+      transition: background 0.3s;
+    }
+
+     .calculator {
+      background: #122;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.382);
+    }
+
+    #display {
+      width: 220px;
+      height: 40px;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: right;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 55px);
+      gap: 10px;
+    }
+
+    button {
+      height: 50px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-op {
+      background: #ff9500;
+      color: white;
+    }
+
+    .btn-num {
+      background: #000;
+      color: white;
+    }
+
+    .btn-eq {
+      background: #34c759;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .btn-clear {
+      background: #ff3b30;
+      color: white;
+      grid-column: span 2;
+    }
+</style>
+<body style="text-align:center; padding:50px;">
+<!-- 81. Кнопка, яка змінює колір фону сторінки. -->
+  <button onclick="changeBackgroundColor()">
+    Змінити колір фону
+  </button>
+<!-- 82. Інпут + кнопка → додають текст у список. -->
+  <h2>Додай елемент у список</h2>
+  
+  <input type="text" id="itemInput" placeholder="Введіть текст">
+  <button onclick="addItem()">Додати</button>
+
+  <ul id="itemList"></ul>
+
+  <!-- 83. Лічильник (кнопки + і – змінюють число на екрані). -->
+
+  <h2>Лічильник</h2>
+  <div id="count">0</div>
+  <button onclick="decrease()">–</button>
+  <button onclick="increase()">+</button>
+
+  <!-- 84. Форма реєстрації → вивести дані у консоль. -->
+
+    <h1>Реєстрація</h1>
+
+  <form id="registerForm" novalidate>
+    <label>
+      Ім'я
+      <input type="text" name="fullName" id="fullName" placeholder="Іван Іванов" required>
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" id="email" placeholder="you@example.com" required>
+    </label>
+
+    <label>
+      Пароль
+      <input type="password" name="password" id="password" placeholder="Щонайменше 6 символів" minlength="6" required>
+    </label>
+
+    <label>
+      Підтвердження пароля
+      <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Повторіть пароль" required>
+    </label>
+
+    <div id="error" class="error" aria-live="polite"></div>
+
+    <button type="submit">Зареєструватися</button>
+  </form>
+
+
+   <!-- 85. Гра "Вгадай число" з input. -->
+
+   <h2>Гра "Вгадай число"</h2>
+  <p>Я загадав число від 1 до 100. Спробуй вгадати!</p>
+
+  <input type="number" id="guessInput" placeholder="Введіть число">
+  <button onclick="checkGuess()">Вгадати</button>
+
+  <div id="message"></div>
+
+  <!-- 86. Кнопка "Like", яка рахує кількість лайків. -->
+
+   <h2>Кнопка "Like"</h2>
+  <button onclick="addLike()">👍 Like</button>
+  <span id="count">0</span>
+
+
+  <!-- 87. Таймер відліку. -->
+
+ <h2>Таймер відліку</h2>
+  <div id="timer">10</div>
+  <button onclick="startTimer()">Старт</button>
+  <button onclick="resetTimer()">Скинути</button>
+
+  <!-- 88. Світлофор (кнопка перемикає кольори). -->
+  
+  <h2>Світлофор</h2>
+  <div class="traffic-light">
+    <div id="red" class="light"></div>
+    <div id="yellow" class="light"></div>
+    <div id="green" class="light"></div>
+  </div>
+
+  <button onclick="nextLight()">Перемкнути</button>
+
+  <!-- 89. Калькулятор (HTML + JS). -->
+
+   <div class="calculator">
+    <input type="text" id="display" >
+    <div class="buttons">
+      <button class="btn-num" onclick="append('7')">7</button>
+      <button class="btn-num" onclick="append('8')">8</button>
+      <button class="btn-num" onclick="append('9')">9</button>
+      <button class="btn-op" onclick="append('/')">÷</button>
+
+      <button class="btn-num" onclick="append('4')">4</button>
+      <button class="btn-num" onclick="append('5')">5</button>
+      <button class="btn-num" onclick="append('6')">6</button>
+      <button class="btn-op" onclick="append('*')">×</button>
+
+      <button class="btn-num" onclick="append('1')">1</button>
+      <button class="btn-num" onclick="append('2')">2</button>
+      <button class="btn-num" onclick="append('3')">3</button>
+      <button class="btn-op" onclick="append('-')">−</button>
+
+      <button class="btn-num" onclick="append('0')">0</button>
+      <button class="btn-num" onclick="append('.')">.</button>
+      <button class="btn-op" onclick="append('+')">+</button>
+      <button class="btn-eq" onclick="calculate()">=</button>
+      <button class="btn-clear" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+
+  <!-- 90. To-do list (додавання/видалення завдань).-->
+
+  <h2>📝 To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Введіть завдання">
+  <button onclick="addTask()">Додати</button>
+
+  <ul id="taskList"></ul>
+
+</body>
+</html>
