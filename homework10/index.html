@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script10.js" defer></script>
+     <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    td, th {
+      border: 1px solid #333;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    th {
+      background: #ddd;
+    }
+
+     .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      max-width: 420px;
+      margin: auto;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .day {
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .day-name {
+      font-weight: bold;
+      background: #ddd;
+    }
+    .empty {
+      background: transparent;
+    }
+
+    .slider {
+      position: relative;
+      width: 400px;
+      height: 250px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .slides img {
+      width: 100%;
+      height: 100%;
+      display: none;
+      object-fit: cover;
+    }
+    .slides img.active {
+      display: block;
+    }
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    button { 
+     padding:10px 16px; 
+     margin:6px; 
+     font-size:16px; 
+     cursor:pointer; 
+    }
+    #laps { 
+     margin-top:20px; 
+     max-width:360px; 
+     margin-left:auto; 
+     margin-right:auto; 
+     text-align:left; 
+    }
+    #laps li { 
+     background:#fff; 
+     padding:8px 10px; 
+     margin:6px 0; 
+     border-radius:6px; 
+     box-shadow:0 1px 4px rgba(0,0,0,0.08); 
+    }
+
+    .game {
+      width: 420px;
+      text-align: center;
+    }
+    h1 { margin: 0 0 10px; font-size: 24px; color: #776e65; }
+    .controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .score { background:#bbada0; color:white; padding:8px 12px; border-radius:6px; font-weight:700; }
+    button { padding:8px 12px; background:#8f7a66; color:white; border:none; border-radius:6px; cursor:pointer; }
+    .board {
+      background:#bbada0;
+      padding:14px;
+      border-radius:8px;
+      display:grid;
+      grid-template-columns: repeat(4, 90px);
+      grid-gap:10px;
+      justify-content:center;
+    }
+    .cell {
+      width:90px; height:90px; border-radius:6px;
+      background: rgba(238,228,218,0.35);
+      display:flex; align-items:center; justify-content:center;
+      font-size:28px; font-weight:700; color:#776e65;
+    }
+    .tile-2 { background:#eee4da; color:#776e65; }
+    .tile-4 { background:#ede0c8; color:#776e65; }
+    .tile-8 { background:#f2b179; color:#f9f6f2; }
+    .tile-16 { background:#f59563; color:#f9f6f2; }
+    .tile-32 { background:#f67c5f; color:#f9f6f2; }
+    .tile-64 { background:#f65e3b; color:#f9f6f2; }
+    .tile-128 { background:#edcf72; color:#f9f6f2; font-size:22px; }
+    .tile-256 { background:#edcc61; color:#f9f6f2; font-size:22px; }
+    .tile-512 { background:#edc850; color:#f9f6f2; font-size:22px; }
+    .tile-1024 { background:#edc53f; color:#f9f6f2; font-size:18px; }
+    .tile-2048 { background:#edc22e; color:#f9f6f2; font-size:18px; }
+    .message {
+      margin-top:12px; font-weight:700; color:#776e65;
+    }
+  </style>
+
+  </style>
+</head>
+<body>  
+
+    <!--91. Конвертер валют (курс задаєш сам). -->
+     <h2> Конвертер валют</h2>
+
+  <p>Введи курс (скільки гривень за 1 долар):</p>
+  <input type="number" id="rateInput" placeholder="Напр. 40" value="40">
+
+  <p>Введи суму в доларах:</p>
+  <input type="number" id="usdInput" placeholder="Напр. 10">
+
+  <button onclick="convert()">Конвертувати</button>
+
+  <div id="answer"></div>
+
+    <!--92. Конвертер температури (C ↔ F). -->
+
+    <h2> кновертер температури з цельсія в фаренгейти </h2>
+
+<p> Введи температуру в цельсіях яку потрібно переконвертувати в фаренгейти: </p>
+<input type="number" id="celciumInput" placeholder="Напр. 25" value="25">
+
+<button onclick="convertTemp()">Конвертувать</button>
+
+<div id="tempResult"></div>
+
+    <!-- 93. Проста гра "Камінь-ножиці-папір".-->
+
+ <h2>✊✌️✋ Камінь-Ножиці-Папір</h2>
+  <p>Зробіть вибір:</p>
+
+  <button onclick="play('Камінь')">✊ Камінь</button>
+  <button onclick="play('Ножиці')">✌️ Ножиці</button>
+  <button onclick="play('Папір')">✋ Папір</button>
+
+  <div id="resultGame"></div>
+
+  <!-- 94. Таблиця множення в DOM.-->
+
+ <h2>📊 Таблиця множення (1–10)</h2>
+  <div id="tableContainer"></div>
+
+<!-- 95. Календар (вивести дні місяця). -->
+
+ <h2>📅 Календар</h2>
+  <label>Місяць (1–12): <input type="number" id="month" min="1" max="12" value="9"></label>
+  <label>Рік: <input type="number" id="year" value="2025"></label>
+  <button onclick="generateCalendar()">Показати</button>
+
+  <div id="calendarContainer"></div>
+
+<!--96. Простий слайдер картинок. -->
+
+ <h2>🖼️ Простий слайдер</h2>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="../img/авававава.png" class="active">
+      <img src="../img/photo_2024-10-28_23-01-47.jpg">
+      <img src="../img/4k-nissan-gt-r-night-r34-supercars.jpg">
+      <img src="../img/eva-00.jpg">
+      <img src="../img/peakpx.jpg">
+    </div>
+    <button class="btn prev" onclick="prevSlide()">⬅️</button>
+    <button class="btn next" onclick="nextSlide()">➡️</button>
+  </div>
+
+
+  <!--97. Генератор випадкового пароля.-->
+
+<h2>🔐 Генератор випадкового пароля</h2>
+
+  <label>Довжина пароля: 
+    <input type="number" id="lengthInput" value="8" min="4" max="32">
+  </label>
+  <br>
+  <button onclick="generatePassword()">Згенерувати</button>
+
+  <div id="result"></div>
+
+<!-- 98. Калькулятор ІМТ (індекс маси тіла). -->
+
+ <h2>⚖️ Калькулятор ІМТ</h2>
+
+  <label>Вага (кг): 
+    <input type="number" id="weight" placeholder="Напр. 70">
+  </label>
+  <br>
+  <label>Зріст (см): 
+    <input type="number" id="height" placeholder="Напр. 175">
+  </label>
+  <br>
+  <button onclick="calculateBMI()">Розрахувати</button>
+
+  <div id="result"></div>
+
+<!-- 99. Секундомір.-->
+
+<h2>Секундомір</h2>
+  <div id="display">00:00.00</div>
+
+  <div>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <button id="lapBtn" disabled>Lap</button>
+    <button id="resetBtn" disabled>Reset</button>
+  </div>
+
+  <ol id="laps"></ol>
+
+  <!--100. Міні-гра "Змійка" або "2048" (простий варіант). -->
+ <div class="game">
+    <h1>2048 </h1>
+    <div class="controls">
+      <div class="score" id="score">Score: 0</div>
+      <button id="newBtn">Нова гра</button>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <div class="message" id="message"></div>
+    <p style="font-size:12px; color:#776e65; margin-top:8px;">
+      Керуй стрілками ↑ ↓ ← →. Мета — отримати плитку 2048.
+    </p>
+  </div>
+
+</body>
+</html>
